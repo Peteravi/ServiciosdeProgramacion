@@ -1,522 +1,1006 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios De Programación Universitaria</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            color: #333;
-            line-height: 1.6;
-        }
+  <title>Peter Avilés | Desarrollo Web, Programación y Soluciones Digitales</title>
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            padding: 5rem 0;
-            margin-bottom: 3rem;
-            border-radius: 0 0 10px 10px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
+  <meta name="description" content="Servicios profesionales de desarrollo web, programación, bases de datos, automatización y soporte técnico. Portafolio de Peter Avilés.">
+  <meta name="keywords" content="desarrollador web, programador, servicios de programación, bases de datos, páginas web, Ecuador, Guayaquil, Peter Avilés">
+  <meta name="author" content="Peter Avilés">
 
-        .service-card {
-            transition: all 0.3s ease;
-            margin-bottom: 25px;
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            height: 100%;
-        }
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        .service-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg-soft: #0d1324;
+      --card: rgba(255, 255, 255, 0.075);
+      --card-solid: #111827;
+      --primary: #38bdf8;
+      --primary-dark: #2563eb;
+      --accent: #22c55e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.13);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
 
-        .info-section {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2.5rem;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .skills-section {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2.5rem;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .skill-category {
-            margin-bottom: 2rem;
-        }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        .skill-category h4 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-        }
+    a {
+      text-decoration: none;
+    }
 
-        .skill-item {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .skill-item:before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
+    .navbar {
+      background: rgba(7, 11, 22, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: 0.3s ease;
+    }
 
-        .notice-section {
-            background-color: #fff8e1;
-            border-left: 5px solid var(--accent-color);
-            padding: 1.8rem;
-            margin-bottom: 2.5rem;
-            border-radius: 8px;
-        }
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
 
-        .footer {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
-        }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      margin-right: 10px;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+    }
 
-        .contact-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
+    .nav-link {
+      color: var(--muted) !important;
+      font-weight: 600;
+      margin-left: 10px;
+      transition: 0.25s ease;
+    }
 
-        .contact-link:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
 
-        .price-badge {
-            background-color: var(--accent-color);
-            font-size: 1.1rem;
-            padding: 0.5rem 1.2rem;
-            font-weight: 500;
-        }
+    .nav-contact {
+      color: #fff !important;
+      padding: 9px 18px !important;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
 
-        .tech-badge {
-            margin-right: 8px;
-            margin-bottom: 8px;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.9rem;
-        }
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      overflow: hidden;
+    }
 
-        .nav-link {
-            transition: all 0.2s ease;
-            font-weight: 500;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.22), transparent 35%),
+        radial-gradient(circle at 85% 10%, rgba(37, 99, 235, 0.27), transparent 35%),
+        radial-gradient(circle at 60% 80%, rgba(34, 197, 94, 0.16), transparent 35%);
+      z-index: -1;
+    }
 
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
 
-        .section-title {
-            position: relative;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            color: var(--secondary-color);
-        }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5.7rem);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      margin-bottom: 28px;
+    }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
-        }
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 3rem 0;
-            }
-            
-            .info-section, .skills-section {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 34px;
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 15px 36px rgba(37, 99, 235, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .btn-main:hover {
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .hero-card {
+      padding: 30px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      right: -70px;
+      top: -70px;
+      background: var(--primary);
+      filter: blur(90px);
+      opacity: 0.55;
+    }
+
+    .profile-img {
+      width: 95px;
+      height: 95px;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin: 5px;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-soft {
+      background: var(--bg-soft);
+    }
+
+    .section-title {
+      max-width: 780px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .section-title small {
+      display: inline-block;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .card-premium {
+      height: 100%;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+
+    .card-premium:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .card-premium h3,
+    .card-premium h4 {
+      font-weight: 850;
+      margin-bottom: 14px;
+    }
+
+    .card-premium p,
+    .card-premium li {
+      color: var(--muted);
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .service-list li {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .service-list i {
+      color: var(--accent);
+      margin-top: 5px;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      color: var(--primary);
+      font-size: 0.83rem;
+      font-weight: 800;
+    }
+
+    .process-step {
+      position: relative;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      height: 100%;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .portfolio-card {
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      height: 100%;
+      transition: 0.3s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .portfolio-img {
+      height: 230px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .portfolio-body {
+      padding: 26px;
+    }
+
+    .portfolio-type {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .notice {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid rgba(250, 204, 21, 0.28);
+      color: #fde68a;
+    }
+
+    .contact-card {
+      display: block;
+      text-align: center;
+      color: var(--text);
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+      height: 100%;
+    }
+
+    .contact-card:hover {
+      color: var(--text);
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card i {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 18px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 1.4rem;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer {
+      padding: 38px 0;
+      background: #030712;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .footer a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      z-index: 1000;
+      box-shadow: 0 14px 35px rgba(37, 211, 102, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .floating-whatsapp:hover {
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 125px 0 70px;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-card {
+        margin-top: 40px;
+      }
+
+      .btn-main,
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="fas fa-code me-2"></i>
-                <span>Servicios Universitarios</span>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <span class="brand-icon"><i class="fa-solid fa-code"></i></span>
+        Peter Avilés
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proceso">Proceso</a></li>
+          <li class="nav-item"><a class="nav-link nav-contact" href="#contacto">Contactar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 reveal">
+          <div class="hero-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            Disponible para clientes, estudiantes y oportunidades laborales
+          </div>
+
+          <h1>
+            Desarrollo soluciones digitales
+            <span>claras, modernas y funcionales.</span>
+          </h1>
+
+          <p>
+            Soy Peter Avilés, desarrollador enfocado en páginas web, programación,
+            bases de datos, automatización y soporte técnico. Ayudo a emprendedores,
+            estudiantes y empresas a convertir ideas en soluciones reales.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 hero-actions">
+            <a href="https://wa.me/593963892976" class="btn-main" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+              Escribirme por WhatsApp
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Habilidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Sección Hero -->
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">SERVICIOS UNIVERSITARIOS DE PROGRAMACIÓN</h1>
-            <p class="lead fs-4 mb-4">Soluciones profesionales para tus proyectos académicos y desarrollo de software</p>
-            <span class="badge price-badge rounded-pill">
-                <i class="fas fa-tag me-1"></i>Costos Accesibles
-            </span>
-        </div>
-    </section>
-
-    <!-- Sección de Servicios -->
-    <section id="services" class="container mb-5">
-        <h2 class="text-center section-title">SERVICIOS</h2>
-        <div class="row g-4">
-            <!-- Lenguajes de Programación -->
-            <div class="col-md-4">
-                <div class="card service-card h-100">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h4 class="card-title mb-3">Lenguajes de Programación</h4>
-                        <div class="d-flex flex-wrap justify-content-center my-3">
-                            <span class="badge bg-primary tech-badge">Java</span>
-                            <span class="badge bg-info text-dark tech-badge">Python</span>
-                            <span class="badge bg-warning text-dark tech-badge">JavaScript</span>
-                            <span class="badge bg-success tech-badge">C#</span>
-                            <span class="badge bg-secondary tech-badge">C++</span>
-                        </div>
-                        <p class="card-text">Desarrollo de aplicaciones y soluciones en los lenguajes más demandados en el ámbito universitario y profesional.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desarrollo Web -->
-            <div class="col-md-4">
-                <div class="card service-card h-100">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4 class="card-title mb-3">Desarrollo Web</h4>
-                        <div class="d-flex flex-wrap justify-content-center my-3">
-                            <span class="badge bg-danger tech-badge">HTML/CSS</span>
-                            <span class="badge bg-warning text-dark tech-badge">JavaScript</span>
-                            <span class="badge bg-primary tech-badge">Angular</span>
-                            <span class="badge bg-info text-dark tech-badge">React</span>
-                            <span class="badge bg-success tech-badge">Flask</span>
-                        </div>
-                        <p class="card-text">Creación de sitios web modernos, responsivos y aplicaciones web interactivas con las últimas tecnologías.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bases de Datos -->
-            <div class="col-md-4">
-                <div class="card service-card h-100">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h4 class="card-title mb-3">Bases de Datos</h4>
-                        <div class="d-flex flex-wrap justify-content-center my-3">
-                            <span class="badge bg-danger tech-badge">Oracle</span>
-                            <span class="badge bg-info text-dark tech-badge">PostgreSQL</span>
-                            <span class="badge bg-primary tech-badge">MySQL</span>
-                            <span class="badge bg-secondary tech-badge">SQL Server</span>
-                            <span class="badge bg-dark tech-badge">MongoDB</span>
-                        </div>
-                        <p class="card-text">Diseño, implementación, optimización y consultas avanzadas para sistemas de bases de datos relacionales y NoSQL.</p>
-                    </div>
-                </div>
-            </div>
+            <a href="#servicios" class="btn-ghost">
+              <i class="fa-solid fa-arrow-down"></i>
+              Ver servicios
+            </a>
+          </div>
         </div>
 
-        <!-- Otros servicios -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="info-section">
-                    <h4 class="mb-4">Otros Servicios Especializados</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Configuración de repositorios GitHub/GitLab</span>
-                                    <span class="badge bg-dark rounded-pill"><i class="fab fa-github me-1"></i></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Análisis de datos con Power BI</span>
-                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-chart-line me-1"></i></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Automatización de procesos</span>
-                                    <span class="badge bg-success rounded-pill"><i class="fas fa-robot me-1"></i></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Asesorías personalizadas</span>
-                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-chalkboard-teacher me-1"></i></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Revisión y depuración de código</span>
-                                    <span class="badge bg-success rounded-pill"><i class="fas fa-bug me-1"></i></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>Instalación y configuración de software</span>
-                                    <span class="badge bg-info rounded-pill"><i class="fas fa-download me-1"></i></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <p class="lead mb-0"><strong>¿Necesitas algo específico?</strong> Contáctame para soluciones personalizadas.</p>
-                    </div>
-                </div>
+        <div class="col-lg-5 reveal">
+          <div class="hero-card">
+            <div class="d-flex align-items-center gap-3 mb-4 position-relative">
+              <img class="profile-img" src="https://lh3.googleusercontent.com/a/ACg8ocKMEbzZGM2mcJCfl6iMyR-7AUszcnNuJgxaYyRM8Px3qMqx4_umDnF911Ngv8zs7yY4CyVjsDd2eO6dX6Am4WPSnryM=s288-c-no" alt="Peter Avilés">
+              <div>
+                <h3 class="mb-1 fw-bold">Peter Avilés</h3>
+                <p class="mb-0 text-secondary-emphasis" style="color: var(--muted) !important;">Desarrollador Web & Programador</p>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Sección de Habilidades -->
-    <section id="skills" class="container mb-5">
-        <div class="skills-section">
-            <h2 class="text-center section-title">MIS HABILIDADES</h2>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="skill-category">
-                        <h4><i class="fas fa-code me-2"></i>Programación</h4>
-                        <div class="skill-item">Programador Junior en Java, Python y C++</div>
-                        <div class="skill-item">Desarrollo de algoritmos y estructuras de datos</div>
-                        <div class="skill-item">Programación orientada a objetos</div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4><i class="fas fa-database me-2"></i>Bases de Datos</h4>
-                        <div class="skill-item">Administración de Oracle, MySQL, SQL Server</div>
-                        <div class="skill-item">Diseño de modelos relacionales</div>
-                        <div class="skill-item">Optimización de consultas SQL</div>
-                        <div class="skill-item">Trabajo con PostgreSQL y MongoDB</div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4><i class="fas fa-tools me-2"></i>Herramientas de Desarrollo</h4>
-                        <div class="skill-item">Visual Studio Code, Visual Studio 2022</div>
-                        <div class="skill-item">PyCharm, NetBeans, Eclipse</div>
-                        <div class="skill-item">Git y control de versiones</div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="skill-category">
-                        <h4><i class="fas fa-laptop me-2"></i>Desarrollo Web</h4>
-                        <div class="skill-item">Frontend con HTML5, CSS3 y JavaScript</div>
-                        <div class="skill-item">Frameworks: Bootstrap, React, Angular</div>
-                        <div class="skill-item">Backend con Flask (Python)</div>
-                        <div class="skill-item">Desarrollo de APIs RESTful</div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4><i class="fas fa-file-alt me-2"></i>Office y Análisis</h4>
-                        <div class="skill-item">Microsoft Word, Excel, PowerPoint avanzado</div>
-                        <div class="skill-item">Power BI para visualización de datos</div>
-                        <div class="skill-item">Informes técnicos y documentación</div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4><i class="fas fa-cogs me-2"></i>Otras Habilidades</h4>
-                        <div class="skill-item">Instalación y configuración de software</div>
-                        <div class="skill-item">Resolución de problemas técnicos</div>
-                        <div class="skill-item">Aprendizaje rápido de nuevas tecnologías</div>
-                    </div>
-                </div>
+            <div class="mb-4 position-relative">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+              <span class="tag">C#</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Power BI</span>
             </div>
-        </div>
-    </section>
 
-    <!-- Sección de Información de Contacto -->
-    <section id="contact" class="container mb-5">
-        <div class="info-section">
-            <h2 class="text-center section-title">CONTÁCTAME</h2>
-            <div class="row">
-                <div class="col-md-4 text-center mb-4">
-                    <div class="p-3 rounded" style="background-color: rgba(52, 152, 219, 0.1);">
-                        <i class="fas fa-envelope fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Correo Electrónico</h5>
-                        <p class="mb-1">
-                            <a href="mailto:avilespiter35@gmail.com" class="contact-link">avilespiter35@gmail.com</a>
-                        </p>
-                        <p class="mb-0">
-                            <a href="mailto:piteravi@outlook.es" class="contact-link">piteravi@outlook.es</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center mb-4">
-                    <div class="p-3 rounded" style="background-color: rgba(52, 152, 219, 0.1);">
-                        <i class="fas fa-phone-alt fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Teléfono/WhatsApp</h5>
-                        <p class="mb-1">
-                            <a href="https://wa.me/593963892976" class="contact-link">+593 963 892 976</a>
-                        </p>
-                        <small class="text-muted">(Disponible por WhatsApp/Llamadas)</small>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="p-3 rounded" style="background-color: rgba(52, 152, 219, 0.1);">
-                        <i class="fas fa-clock fa-2x mb-3" style="color: var(--primary-color);"></i>
-                        <h5>Disponibilidad</h5>
-                        <p class="mb-1">Respuesta en menos de 24 horas</p>
-                        <p class="mb-0">Horario flexible según necesidades</p>
-                    </div>
-                </div>
+            <div class="position-relative">
+              <a href="mailto:avilespiter35@gmail.com" class="btn-ghost w-100 justify-content-center mb-3">
+                <i class="fa-solid fa-envelope"></i>
+                avilespiter35@gmail.com
+              </a>
+
+              <a href="https://wa.me/593963892976" target="_blank" class="btn-main w-100 justify-content-center">
+                <i class="fa-brands fa-whatsapp"></i>
+                +593 963 892 976
+              </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-soft" id="servicios">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>Servicios</small>
+        <h2>Lo que puedo desarrollar para ti</h2>
+        <p>
+          Servicios pensados para clientes que necesitan una solución profesional,
+          estudiantes que requieren apoyo técnico y reclutadores que buscan un perfil práctico.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
+            <h3>Desarrollo Web</h3>
+            <p>Páginas modernas, responsivas y profesionales para negocios, marcas personales o servicios.</p>
+            <div>
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Bootstrap</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Aviso importante -->
-        <div class="notice-section">
-            <h4 class="d-flex align-items-center">
-                <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-color);"></i>
-                AVISO IMPORTANTE
-            </h4>
-            <p class="mb-0">
-                Para garantizar la mejor calidad en los trabajos, no se aceptarán proyectos con menos de 48 horas de anticipación a la fecha de entrega. 
-                Se recomienda contactar con al menos 5 días de anticipación para proyectos complejos.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <h3 class="mb-3">Servicios de Programación Universitaria</h3>
-                    <p class="mb-0">Soluciones profesionales para tus proyectos académicos y de desarrollo de software.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <h5 class="mb-3">Enlaces Rápidos</h5>
-                    <a href="#services" class="contact-link me-3">Servicios</a>
-                    <a href="#skills" class="contact-link me-3">Habilidades</a>
-                    <a href="#contact" class="contact-link">Contacto</a>
-                    <div class="mt-3">
-                        <a href="https://wa.me/593963892976" class="btn btn-success me-2">
-                            <i class="fab fa-whatsapp me-1"></i> WhatsApp
-                        </a>
-                        <a href="mailto:avilespiter35@gmail.com" class="btn btn-primary">
-                            <i class="fas fa-envelope me-1"></i> Email
-                        </a>
-                    </div>
-                </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Programación</h3>
+            <p>Desarrollo de sistemas, scripts, lógica de negocio, tareas académicas y soluciones personalizadas.</p>
+            <div>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">C#</span>
+              <span class="tech-badge">C++</span>
             </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">© 2025 Servicios de Programación Universitaria. Todos los derechos reservados.</p>
-            </div>
+          </div>
         </div>
-    </footer>
 
-    <!-- Bootstrap JS y Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-database"></i></div>
+            <h3>Bases de Datos</h3>
+            <p>Diseño, consultas, normalización, reportes y optimización de bases de datos relacionales.</p>
+            <div>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Oracle</span>
+              <span class="tech-badge">SQL Server</span>
+            </div>
+          </div>
+        </div>
 
-    <!-- JavaScript personalizado -->
-    <script>
-        // Efecto smooth scroll para los enlaces
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Análisis de Datos</h3>
+            <p>Dashboards, reportes, limpieza de datos y visualizaciones para entender mejor la información.</p>
+            <div>
+              <span class="tech-badge">Excel</span>
+              <span class="tech-badge">Power BI</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Pandas</span>
+            </div>
+          </div>
+        </div>
 
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-robot"></i></div>
+            <h3>Automatización</h3>
+            <p>Automatización de tareas repetitivas, generación de archivos, reportes y procesos internos.</p>
+            <div>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Scripts</span>
+              <span class="tech-badge">Excel</span>
+              <span class="tech-badge">APIs</span>
+            </div>
+          </div>
+        </div>
 
-        // Animación para las tarjetas al aparecer
-        document.addEventListener('DOMContentLoaded', function () {
-            const animateElements = document.querySelectorAll('.service-card, .skill-category');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            animateElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="card-premium">
+            <div class="icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Soporte Técnico</h3>
+            <p>Instalación de software, configuración de herramientas, GitHub, entornos de desarrollo y revisión de errores.</p>
+            <div>
+              <span class="tech-badge">GitHub</span>
+              <span class="tech-badge">VS Code</span>
+              <span class="tech-badge">Windows</span>
+              <span class="tech-badge">Software</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Cambiar estilo de navbar al hacer scroll
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                    navbar.style.padding = '0.5rem 0';
-                } else {
-                    navbar.style.boxShadow = 'none';
-                    navbar.style.padding = '1rem 0';
-                }
-            });
-        });
-    </script>
+  <section class="section" id="habilidades">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>Habilidades</small>
+        <h2>Perfil técnico</h2>
+        <p>Conocimientos prácticos para construir, corregir, documentar y presentar soluciones funcionales.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6 reveal">
+          <div class="card-premium">
+            <h4><i class="fa-solid fa-code text-info me-2"></i>Programación y desarrollo</h4>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Programación orientada a objetos.</li>
+              <li><i class="fa-solid fa-check"></i> Desarrollo de algoritmos y estructuras de datos.</li>
+              <li><i class="fa-solid fa-check"></i> Desarrollo web con HTML, CSS y JavaScript.</li>
+              <li><i class="fa-solid fa-check"></i> Backend básico con Python, Flask y APIs REST.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal">
+          <div class="card-premium">
+            <h4><i class="fa-solid fa-database text-info me-2"></i>Bases de datos y reportes</h4>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Diseño de modelos relacionales.</li>
+              <li><i class="fa-solid fa-check"></i> Consultas SQL, joins, filtros y procedimientos básicos.</li>
+              <li><i class="fa-solid fa-check"></i> Trabajo con Oracle, MySQL, SQL Server y PostgreSQL.</li>
+              <li><i class="fa-solid fa-check"></i> Reportes en Excel y visualización con Power BI.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal">
+          <div class="card-premium">
+            <h4><i class="fa-solid fa-tools text-info me-2"></i>Herramientas</h4>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Visual Studio Code, Visual Studio 2022, NetBeans y PyCharm.</li>
+              <li><i class="fa-solid fa-check"></i> Git, GitHub y control de versiones.</li>
+              <li><i class="fa-solid fa-check"></i> Instalación y configuración de entornos.</li>
+              <li><i class="fa-solid fa-check"></i> Documentación técnica y presentación de proyectos.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal">
+          <div class="card-premium">
+            <h4><i class="fa-solid fa-user-tie text-info me-2"></i>Valor profesional</h4>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> Comunicación clara con el cliente.</li>
+              <li><i class="fa-solid fa-check"></i> Entregas ordenadas y documentadas.</li>
+              <li><i class="fa-solid fa-check"></i> Enfoque en soluciones simples, útiles y funcionales.</li>
+              <li><i class="fa-solid fa-check"></i> Aprendizaje rápido y adaptación a nuevas tecnologías.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="proyectos">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>Portafolio</small>
+        <h2>Proyectos y soluciones que puedo construir</h2>
+        <p>Ejemplos del tipo de trabajos que puedo desarrollar para clientes, empresas o proyectos académicos.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="portfolio-card">
+            <img class="portfolio-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" alt="Sistema web">
+            <div class="portfolio-body">
+              <span class="portfolio-type">Web App</span>
+              <h4>Sistema de Gestión Web</h4>
+              <p class="text-secondary-emphasis" style="color: var(--muted) !important;">
+                Panel administrativo para gestionar usuarios, registros, pagos, productos o servicios.
+              </p>
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="portfolio-card">
+            <img class="portfolio-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Dashboard de datos">
+            <div class="portfolio-body">
+              <span class="portfolio-type">Data</span>
+              <h4>Dashboard y Reportes</h4>
+              <p class="text-secondary-emphasis" style="color: var(--muted) !important;">
+                Reportes visuales para analizar ventas, inventarios, clientes o métricas de negocio.
+              </p>
+              <span class="tech-badge">Power BI</span>
+              <span class="tech-badge">Excel</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">SQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="portfolio-card">
+            <img class="portfolio-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80" alt="Inventario">
+            <div class="portfolio-body">
+              <span class="portfolio-type">Sistema</span>
+              <h4>Control de Inventario</h4>
+              <p class="text-secondary-emphasis" style="color: var(--muted) !important;">
+                Aplicación para registrar productos, controlar stock, ventas y reportes básicos.
+              </p>
+              <span class="tech-badge">C#</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">.NET</span>
+              <span class="tech-badge">Reportes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice mt-5 reveal">
+        <h4><i class="fa-solid fa-triangle-exclamation me-2"></i>Nota importante</h4>
+        <p class="mb-0">
+          Para garantizar calidad y buena comunicación, se recomienda solicitar trabajos con al menos
+          48 horas de anticipación. Para sistemas, páginas web o proyectos complejos, lo ideal es coordinar
+          con varios días de margen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="proceso">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>Proceso</small>
+        <h2>Forma de trabajo</h2>
+        <p>Un proceso simple para evitar confusiones y entregar resultados ordenados.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h4>Consulta</h4>
+            <p>Me explicas lo que necesitas, fecha de entrega, requisitos y materiales disponibles.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h4>Propuesta</h4>
+            <p>Te indico alcance, costo aproximado, tiempo estimado y forma de entrega.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h4>Desarrollo</h4>
+            <p>Construyo la solución con estructura clara, diseño limpio y funcionalidad completa.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h4>Entrega</h4>
+            <p>Recibes archivos, explicación, documentación básica o soporte según el trabajo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="contacto">
+    <div class="container">
+      <div class="section-title reveal">
+        <small>Contacto</small>
+        <h2>Hablemos de tu proyecto</h2>
+        <p>Escríbeme para cotizar una página web, sistema, asesoría, automatización o proyecto técnico.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal">
+          <a class="contact-card" href="https://wa.me/593963892976" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            <h4>WhatsApp</h4>
+            <p>+593 963 892 976</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <a class="contact-card" href="mailto:avilespiter35@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <h4>Correo</h4>
+            <p>avilespiter35@gmail.com</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <a class="contact-card" href="mailto:piteravi@outlook.es">
+            <i class="fa-brands fa-microsoft"></i>
+            <h4>Outlook</h4>
+            <p>piteravi@outlook.es</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <a class="contact-card" href="#inicio">
+            <i class="fa-solid fa-clock"></i>
+            <h4>Disponibilidad</h4>
+            <p>Respuesta en menos de 24 horas</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6 text-center text-md-start">
+          <strong>Peter Avilés</strong>
+          <p class="mb-0">Desarrollo web, programación, bases de datos y soluciones digitales.</p>
+        </div>
+
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#servicios" class="me-3">Servicios</a>
+          <a href="#habilidades" class="me-3">Habilidades</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="text-center">
+        <p class="mb-0">© <span id="year"></span> Peter Avilés. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/593963892976" class="floating-whatsapp" target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", function(e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach(element => observer.observe(element));
+
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        navbar.style.boxShadow = "0 18px 50px rgba(0,0,0,0.25)";
+      } else {
+        navbar.style.boxShadow = "none";
+      }
+    });
+  </script>
+
 </body>
 </html>
